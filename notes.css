@@ -6,7 +6,7 @@ body {
 
 .header {
   text-align: center;
-  background-color: purple;
+  background-color: #8FBE00;
   margin: 0;
   padding: 10px 0px;
   color: white;
@@ -27,7 +27,7 @@ button, input {
 }
 
 .filters {
-  background-color: orange;
+  background-color: #F9F2E7;
   display: inline-block;
   width: 100%;
   height: 35px;
@@ -38,6 +38,22 @@ button, input {
   background-color: inherit;
   border: none;
   padding-left: 5px;
+}
+
+.filters input::-webkit-input-placeholder {
+   color: black;
+}
+
+.filters input:-moz-placeholder { /* Firefox 18- */
+   color: white;  
+}
+
+.filters input::-moz-placeholder {  /* Firefox 19+ */
+   color: white;  
+}
+
+.filters input:-ms-input-placeholder {  
+   color: white;  
 }
 
 .filters select {
@@ -67,10 +83,10 @@ select {
 }
 
 .note:nth-child(odd) {
-  background-color: lightblue;
+  background-color: #40C0CB;
 }
 .note:nth-child(even) {
-  background-color: lavender;
+  background-color: #8dd9e0;
 }
 
 .note {
