@@ -9,10 +9,15 @@
 
     var activeNoteId = null;
 
-    function resizeTextArea(textarea) {
-      textarea.css('overflowY', 'hidden');
+    function resizeTextArea(textarea) { 
       textarea.height('initial');
-      textarea.height(Math.min(textarea.prop('scrollHeight'), 214) + 'px');
+      var maxHeight = textarea.height() * 5;
+      if (textarea.prop('scrollHeight') > maxHeight) {
+        textarea.css('overflowY', 'scroll');
+      } else {
+        textarea.css('overflowY', 'hidden');
+      }
+      textarea.height(Math.min(textarea.prop('scrollHeight'), maxHeight) + 'px');
     }
 
     $(document).on('keyup', '.note-content', function (e) {
