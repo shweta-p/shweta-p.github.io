@@ -5,10 +5,9 @@ body {
   padding: 15px;
 }
 
-input[type='submit'] {
-   -webkit-appearance: none;
-   -moz-appearance: none;
-   appearance: none;  
+input {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
 }
 
 .filters {
