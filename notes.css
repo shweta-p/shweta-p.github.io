@@ -5,6 +5,11 @@ body {
   padding: 15px;
 }
 
+.notes {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
 button, input {
   -webkit-appearance: none;
   -webkit-border-radius: 0;
