@@ -50,8 +50,9 @@
       return moment(date).calendar();
     }
 
-    // Adds a note to html page
+    // Adds a note to html page, and updates the "no-notes" class used by the filter
     var addNote = function (note) {
+      $('#filtersDiv').removeClass('no-notes');
       var updatedDate = prettyDate(note.updatedAt);
       var createdDate = prettyDate(note.createdAt);
       var notePreview = note.noteText.split('\n')[0];
@@ -152,8 +153,13 @@
       notes = notes.filter(function (aNote) {
         return aNote.id != note.attr('id');
       });
-      note.toggle();
+      note.remove();
       saveNotes();
+
+      // if we've deleted all the notes, then add the "no notes" class to the filter div
+      if (notes.length === 0) {
+        $('#filtersDiv').addClass('no-notes');
+      }
     });
 
     // Filters and sorts the notes

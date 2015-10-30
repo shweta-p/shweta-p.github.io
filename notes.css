@@ -24,6 +24,10 @@ input {
   width: 100px;
 }
 
+.filters.no-notes {
+  display: none;
+}
+
 input {
   font-size: inherit;
   height: inherit;
