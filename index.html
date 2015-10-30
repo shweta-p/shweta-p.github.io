@@ -17,24 +17,26 @@
   </head>
 
   <body>
-    <h1>Notes</h1>
-    <div class="new-note">
-      <form class="new-note-form" id="newNoteForm">
-        <textarea id="newNoteText" class="note-content" placeholder="Add a Note" rows="2" cols="20" required></textarea>
-        <input type="submit" value="Add" />
-      </form>
+    <h3 class="header">Notes</h3>
+    <div class="body-container">
+      <div class="new-note">
+        <form class="new-note-form" id="newNoteForm">
+          <textarea id="newNoteText" class="note-content" placeholder="Add a Note" rows="2" cols="20" required></textarea>
+          <input type="submit" value="Add" />
+        </form>
+      </div>
+      <div class="filters no-notes" id="filtersDiv">
+        <input type="text" placeholder="Search Term (Optional)" id="notesSearchFilter" />
+        <select id="notesOrder">
+          <option value="created">Created</option>
+          <option value="updated" default>Updated</option>
+        </select>
+        <!-- Uncomment if you want to see more filter options <select id="notesOrderDirection">
+          <option value="asc" default>Newest to Oldest</option>
+          <option value="dec">Oldest to Newest</option>
+        </select>-->
+      </div>
+      <div class="notes" id="notesContainer"></div>
     </div>
-    <div class="filters no-notes" id="filtersDiv">
-      <input type="text" placeholder="Search Term (Optional)" id="notesSearchFilter" />
-      <select id="notesOrder">
-        <option value="created">Created</option>
-        <option value="updated" default>Updated</option>
-      </select>
-      <!-- Uncomment if you want to see more filter options <select id="notesOrderDirection">
-        <option value="asc" default>Newest to Oldest</option>
-        <option value="dec">Oldest to Newest</option>
-      </select>-->
-    </div>
-    <div class="notes" id="notesContainer"></div>
   </body>
 </html>
