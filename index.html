@@ -25,18 +25,20 @@
           <input type="submit" value="Add" />
         </form>
       </div>
-      <div class="filters no-notes" id="filtersDiv">
-        <input type="text" placeholder="Search Term (Optional)" id="notesSearchFilter" />
-        <select id="notesOrder">
-          <option value="created">Created</option>
-          <option value="updated" default>Updated</option>
-        </select>
-        <!-- Uncomment if you want to see more filter options <select id="notesOrderDirection">
-          <option value="asc" default>Newest to Oldest</option>
-          <option value="dec">Oldest to Newest</option>
-        </select>-->
+      <div class="notes-table">
+        <div class="filters no-notes" id="filtersDiv">
+          <input type="text" placeholder="Search Term (Optional)" id="notesSearchFilter" />
+          <select id="notesOrder">
+            <option value="created">Created</option>
+            <option value="updated" default>Updated</option>
+          </select>
+          <!-- Uncomment if you want to see more filter options <select id="notesOrderDirection">
+            <option value="asc" default>Newest to Oldest</option>
+            <option value="dec">Oldest to Newest</option>
+          </select>-->
+        </div>
+        <div class="notes" id="notesContainer"></div>
       </div>
-      <div class="notes" id="notesContainer"></div>
     </div>
   </body>
 </html>
