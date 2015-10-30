@@ -1,60 +1,39 @@
-<!DOCTYPE html>
+<!-- Notes:
+  * I've used classes mainly for styling purposes and id's for unique tags that my js will interact with. For example, the "New Note Form" contains both a class (which is used in my css to style the form) and an id (which is used in my js to handle the submit event on the form). Reasoning for this: If ever I want to give this form a different style (defined by say another-new-note-form), I can go ahead and change just the class and leave my js unchanged since the id is still the same. Tl;dr: Classes are for styling, Id's are for js interaction (for the most part).
+-->
 <html>
   <head>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
-    <script src="javascript/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="notes.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+
+    <script src="notes.js"></script>
   </head>
 
   <body>
-    <header>
-        SayThis<span class="bold">NotThat</span>
-        <br/>
-        <small>A helpful tool for compassionate communication</small>
-      </header>
-    </div>
-    <div class="container">
-      <div class="description">
-      This is a resource born out of a need to help others say what they really want to say without accidentally using offending language. Users are free to utilize suggestions offered through this resource, and can use this as a learning tool in order to reduce unintentionally harmful effects of their word usage.
-      </div>
-      <form role="form">
-        <div class="form-group">
-          <label for="textInput">ENTER TEXT</label>
-          <div id="content-area" contenteditable="true"></div>
-        </div>
-        <button onclick="myFunction()" type="button" class="btn btn-default">Submit</button>
+    <h1>Notes</h1>
+    <div class="new-note">
+      <form class="new-note-form" id="newNoteForm">
+        <textarea id="newNoteText" class="note-content" placeholder="Add a Note" rows="2" cols="20" required></textarea>
+        <input type="submit" value="Add" />
       </form>
-      <br/>
-      <div id="suggestions"></div>
-      
     </div>
-
-    <script type="text/template" id="category-template">
-      <br/><br/><br/>
-      <div class="category-list">
-        <h2>Categories</h2>
-        <ul>
-          <% _.each( data, function(cat) { %>
-          <li class=<%= cat.categoryName %>>
-            <%= cat.categoryName %> 
-            <div class="btn-group btn-toggle">
-              <button class="btn btn-sm btn-primary active">ON</button>
-              <button class="btn btn-sm btn-default">OFF</button>
-            </div>
-          </li>
-          <% }); %>
-        </ul>
-      </div>
-    </script>
-    <script src="javascript/data.js"></script>
-    <script src="javascript/pull.js"></script>
+    <div class="filters">
+      <input type="text" placeholder="Search Term (Optional)" id="notesSearchFilter" />
+      <select id="notesOrder">
+        <option value="created">Created</option>
+        <option value="updated" default>Updated</option>
+      </select>
+      <!-- Uncomment if you want to see more filter options <select id="notesOrderDirection">
+        <option value="asc" default>Newest to Oldest</option>
+        <option value="dec">Oldest to Newest</option>
+      </select>-->
+    </div>
+    <div class="notes" id="notesContainer"></div>
   </body>
-
 </html>
