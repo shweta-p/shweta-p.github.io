@@ -160,6 +160,8 @@
       if (notes.length === 0) {
         $('#filtersDiv').addClass('no-notes');
       }
+
+      activeNoteId = null;
     });
 
     // Filters and sorts the notes
