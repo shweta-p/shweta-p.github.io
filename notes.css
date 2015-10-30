@@ -5,6 +5,12 @@ body {
   padding: 15px;
 }
 
+input[type='submit'] {
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;  
+}
+
 .filters {
   display: inline-block;
   margin-bottom: 15px;
