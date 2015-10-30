@@ -120,24 +120,30 @@
       resizeTextArea(newNoteContent);
     });
 
+    notesContainer.on('focusout', '.note-content', function (e) {
+      if (activeNoteId) {
+        // close and save the currently open note
+        $('#' + activeNoteId).find('.note-content').prop('disabled', true);
+        var activeNoteContent = $('#' + activeNoteId).find('.note-content').val();
+        for (i = 0; i < notes.length; i++) {
+          if (activeNoteId === notes[i].id) {
+            notes[i].noteText = activeNoteContent;
+            updatedDate = notes[i].update();
+          }
+        }
+        $('#' + activeNoteId).find('.note-title').text(activeNoteContent.split('\n')[0]);
+        saveNotes();
+      }
+    });
+
     // Handles the edit note action by enabling the editing of a note and displaying the save button
-    notesContainer.on('click', '.edit-note', function(e) {
+    notesContainer.on('click', '.edit-note', function (e) {
       if (!$(e.target).hasClass('delete-note')) {
         var note = $(e.target).closest('.note');
         var noteId = note.attr('id');
-        if (activeNoteId) {
-          // close and save the currently open note
-          $('#' + activeNoteId).find('.note-content').prop('disabled', true);
-          var activeNoteContent = $('#' + activeNoteId).find('.note-content').val();
-          for (i = 0; i < notes.length; i++) {
-            if (activeNoteId === notes[i].id) {
-              notes[i].noteText = activeNoteContent;
-              updatedDate = notes[i].update();
-            }
-          }
-          $('#' + activeNoteId).find('.note-title').text(activeNoteContent.split('\n')[0]);
-          saveNotes();
-        }
+
+        $('#' + activeNoteId).find('.note-content').prop('disabled', true);
+        
         // if user clicks on a note header for a note that's already open then we close that note
         if (activeNoteId != noteId || $(e.target).prop('tagName').toLowerCase() === 'textarea') {
           activeNoteId = noteId;
