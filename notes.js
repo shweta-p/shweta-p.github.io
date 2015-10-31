@@ -84,11 +84,11 @@
       notesContainer.empty();
       var asc;
 
-      var orderBy = $('#notesOrder').val() === "created" ? 'createdAt' : 'updatedAt';
+      var orderBy = $('#notesOrder').find('option:selected').val() === "created" ? 'createdAt' : 'updatedAt';
 
       // This is statement only applies if the "newest to oldest" filtering feature is turned on
-      if ($('#notesOrderDirection').val()) {
-        asc = $('#notesOrderDirection').val() === "asc";
+      if ($('#notesOrderDirection').find('option:selected').val()) {
+        asc = $('#notesOrderDirection').find('option:selected').val() === "asc";
       } else {
         asc = orderBy === 'updatedAt'; 
       }
@@ -185,10 +185,6 @@
       renderNotes(notes);
     });
     notesSearchFilter.keyup(function () {
-      renderNotes(notes);
-    });
-    // Addresses a bug in chrome mobile where change for selects isn't triggered
-    filterFormElements.blur(function () {
       renderNotes(notes);
     });
 
