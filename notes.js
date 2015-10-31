@@ -52,7 +52,7 @@
     }
 
     // Adds a note to html page, and updates the "no-notes" class used by the filter depending on if there is at least 1 note or not
-    var addNote = function (note) {
+    function addNote (note) {
       $('#filtersDiv').removeClass('no-notes');
       var updatedDate = prettyDate(note.updatedAt);
       var createdDate = prettyDate(note.createdAt);
@@ -88,7 +88,6 @@
 
       // This is statement only applies if the "newest to oldest" filtering feature is turned on
       if ($('#notesOrderDirection').val()) {
-        $('body').append($('#notesOrderDirection').val());
         asc = $('#notesOrderDirection').val() === "asc";
       } else {
         asc = (orderBy === 'updatedAt'); 
@@ -107,6 +106,7 @@
       var i;
       for (i = 0; i < filteredNotes.length; i++) {
         addNote(filteredNotes[i]);
+        $('body').append(filteredNotes[i].noteText);
       }
     }
 
