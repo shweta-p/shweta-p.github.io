@@ -100,7 +100,6 @@
       });
 
       filteredNotes = filteredNotes.sort(function (note1, note2) {
-        $('body').append(note1.noteText + ' ' + note2.noteText);
         return asc ? note1[orderBy] - note2[orderBy] : note2[orderBy] - note1[orderBy];
       });
 
