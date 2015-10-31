@@ -116,7 +116,7 @@
       notes.unshift(note);
       addNote(note);
       saveNotes();
-      newNoteContent.val('');
+      newNoteContent.val(null);
       resizeTextArea(newNoteContent);
     });
 
