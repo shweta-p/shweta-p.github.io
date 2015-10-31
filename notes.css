@@ -53,6 +53,7 @@ button, input {
   background-color: inherit;
   border: none;
   border-left: solid;
+  border-left-width: 1px;
   border-radius: 0px;
   position: relative;
   right: -5px;
