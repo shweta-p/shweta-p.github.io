@@ -181,7 +181,7 @@
     });
 
     // Filters and sorts the notes
-    $(document).on('change', '#notesOrder, #notesOrderDirection', function () {
+    filterFormElements.live('change', function () {
       renderNotes(notes);
     });
     notesSearchFilter.keyup(function () {
