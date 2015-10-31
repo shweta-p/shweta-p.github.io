@@ -100,7 +100,7 @@
       });
 
       var filteredNotes = filteredNotes.sort(function (note1, note2) {
-        $('body').append(asc + ' ' + note1[orderBy] + ' ' + note2[orderBy]);
+        $('body').append(asc + ' ' + (asc ? note1[orderBy] > note2[orderBy] : note1[orderBy] < note2[orderBy]));
         return asc ? note1[orderBy] > note2[orderBy] : note1[orderBy] < note2[orderBy];
       });
 
