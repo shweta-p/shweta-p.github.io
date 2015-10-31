@@ -85,7 +85,7 @@
       var asc;
 
       var orderBy = $('#notesOrder').val() === "created" ? 'createdAt' : 'updatedAt';
-      $('body').append($('#notesOrder').find('option:selected').val());
+      $('body').append('here: ' + $('#notesOrder').find('option:selected').val());
       // This is statement only applies if the "newest to oldest" filtering feature is turned on
       if ($('#notesOrderDirection').val()) {
         asc = $('#notesOrderDirection').val() === "asc";
