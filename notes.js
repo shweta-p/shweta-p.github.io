@@ -188,7 +188,7 @@
       renderNotes(notes);
     });
     // Addresses a bug in chrome mobile where change for selects isn't triggered
-    filterFormElements.click(function () {
+    filterFormElements.blur(function () {
       renderNotes(notes);
     });
 
