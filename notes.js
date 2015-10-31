@@ -94,10 +94,12 @@
       }
 
       var searchTerm = notesSearchFilter.val().toLowerCase();
-      $('body').append(JSON.stringify(notes));
+
       var filteredNotes = notes.filter(function (note) {
         return searchTerm ? note.noteText.toLowerCase().indexOf(searchTerm) > -1 : true;
       });
+
+      $('body').append(JSON.stringify(filteredNotes) ' .');
 
       var filteredNotes = filteredNotes.sort(function (note1, note2) {
         return asc ? note1[orderBy] > note2[orderBy] : note1[orderBy] < note2[orderBy];
