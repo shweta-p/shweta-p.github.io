@@ -6,9 +6,9 @@
     var newNoteContent = $('#newNoteText');
     var filterFormElements = $('#notesOrder, #notesOrderDirection');
     var notesSearchFilter = $('#notesSearchFilter');
-
     var activeNoteId = null;
 
+    // resizes a text area's height based on how many lines have been typed inside of it
     function resizeTextArea(textarea) { 
       textarea.height('initial');
       var maxHeight = textarea.height() * 5;
@@ -20,11 +20,12 @@
       textarea.height(Math.min(textarea.prop('scrollHeight'), maxHeight) + 'px');
     }
 
+    // when a user edits a note's content, the associated textarea's height may need to be adjusted using resizeTextArea function
     $(document).on('keyup', '.note-content', function (e) {
       resizeTextArea($(e.target));
     });
 
-    // Constructor for a note
+    // Constructor for a note. A note contains text, createdAt time, updatedAt time, and an update function that should be called when the updatedAt time needs to be set to now
     function Note (noteText, createdAt, updatedAt) {
       this.noteText = noteText;
       this.createdAt = createdAt || (new Date()).getTime();
@@ -36,7 +37,7 @@
       }
     }
 
-    // Unique id generator function
+    // Unique id generator function for each note
     var generateId = (function () {
       var counter = 0;
       return function () {
@@ -50,7 +51,7 @@
       return moment(date).calendar();
     }
 
-    // Adds a note to html page, and updates the "no-notes" class used by the filter
+    // Adds a note to html page, and updates the "no-notes" class used by the filter depending on if there is at least 1 note or not
     var addNote = function (note) {
       $('#filtersDiv').removeClass('no-notes');
       var updatedDate = prettyDate(note.updatedAt);
@@ -64,7 +65,7 @@
       localStorage['notes'] = JSON.stringify(notes);
     };
 
-    // Loads all notes from local storage to an array of Note objects and populates them on the html page
+    // Loads all notes from local storage to an array of Note objects and populates them on the html page using the renderNotes function
     var notes = (function initApplication (data) {
       var notes = data ? JSON.parse(data) : [];
       var notesObjects = [];
@@ -78,7 +79,7 @@
       return notesObjects;
     })(localStorage['notes']);
 
-    // Rerenders all notes in the html page
+    // Rerenders all notes in the html page. Expects as input an array of Notes. Applies appropriate filters before rendering the notes
     function renderNotes(notes) {
       notesContainer.empty();
       var asc;
@@ -120,6 +121,7 @@
       resizeTextArea(newNoteContent);
     });
 
+    // Saves the currently active note
     function saveActiveNote () {
       var updatedDate;
       var note = $('#' + activeNoteId);
@@ -136,15 +138,14 @@
       saveNotes();
     }
 
-    // Handles the edit note action by enabling the editing of a note and displaying the save button
+    // When a user clicks on a note, we're in "edit mode" for that note, meaning we change the currently active note to the note the user has clicked on
     notesContainer.on('click', '.edit-note', function(e) {
       if (!$(e.target).hasClass('delete-note')) {
         var note = $(e.target).closest('.note');
         var noteId = note.attr('id');
         if (activeNoteId) {
-          // close and save the currently open note
+          // close the currently open note
           $('#' + activeNoteId).find('.note-content').prop('disabled', true);
-          saveActiveNote();
         }
         // if user clicks on a note header for a note that's already open then we close that note
         if (activeNoteId != noteId || $(e.target).prop('tagName').toLowerCase() === 'textarea') {
@@ -157,7 +158,8 @@
       }
     });
 
-    $(window).on("beforeunload", function() {
+    // Saves a note each time a change is made. Note that only the active note would need to be saved as it's currently the one being edited
+    notesContainer.on('change', '.note-content', function () {
       saveActiveNote();
     });
 
