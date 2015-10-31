@@ -84,11 +84,11 @@
       notesContainer.empty();
       var asc;
 
-      var orderBy = $('#notesOrder').find('option:selected').val() === "created" ? 'createdAt' : 'updatedAt';
-
+      var orderBy = $('#notesOrder').val() === "created" ? 'createdAt' : 'updatedAt';
+      $('body').append($('#notesOrder').val());
       // This is statement only applies if the "newest to oldest" filtering feature is turned on
-      if ($('#notesOrderDirection').find('option:selected').val()) {
-        asc = $('#notesOrderDirection').find('option:selected').val() === "asc";
+      if ($('#notesOrderDirection').val()) {
+        asc = $('#notesOrderDirection').val() === "asc";
       } else {
         asc = orderBy === 'updatedAt'; 
       }
