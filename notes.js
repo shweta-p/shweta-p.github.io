@@ -100,13 +100,13 @@
       });
 
       var filteredNotes = filteredNotes.sort(function (note1, note2) {
+        $('body').append(asc + ' ' + note1[orderBy] + ' ' + note2[orderBy]);
         return asc ? note1[orderBy] > note2[orderBy] : note1[orderBy] < note2[orderBy];
       });
 
       var i;
       for (i = 0; i < filteredNotes.length; i++) {
         addNote(filteredNotes[i]);
-        $('body').append(filteredNotes[i].noteText);
       }
     }
 
