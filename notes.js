@@ -150,12 +150,12 @@
           // close the currently open note
           $('#' + activeNoteId).find('.note-content').prop('disabled', true);
         }
-        // if user clicks on a note header for a note that's already open then we close that note
+        // if a user has clicked into the textarea of a note, we know that we're in edit mode for this note, so update the active note id and activate the textarea
         if (activeNoteId != noteId || $(e.target).prop('tagName').toLowerCase() === 'textarea') {
           activeNoteId = noteId;
           note.find('.note-content').prop('disabled', false);
           resizeTextArea(note.find('.note-content'));
-        } else {
+        } else { // if user clicks on a note header for a note that's already open then we close that note
           activeNoteId = null;
         }
       }
