@@ -27,10 +27,11 @@ button, input {
 }
 
 .filters {
-  background-color: #F9F2E7;
+  background-color: #9CDFFF;
   display: inline-block;
   width: 100%;
   height: 35px;
+  margin-bottom: 10px;
 }
 
 .filters input {
@@ -83,10 +84,10 @@ select {
 }
 
 .note:nth-child(odd) {
-  background-color: #40C0CB;
+  background-color: #F7FDFF;
 }
 .note:nth-child(even) {
-  background-color: #8dd9e0;
+  background-color: #9CDFFF;
 }
 
 .note {
