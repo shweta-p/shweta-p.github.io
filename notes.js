@@ -181,10 +181,14 @@
     });
 
     // Filters and sorts the notes
-    filterFormElements.live('change', function () {
+    filterFormElements.change(function () {
       renderNotes(notes);
     });
     notesSearchFilter.keyup(function () {
+      renderNotes(notes);
+    });
+    // Addresses a bug in chrome mobile where change for selects isn't triggered
+    filterFormElements.click(function () {
       renderNotes(notes);
     });
 
