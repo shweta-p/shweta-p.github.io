@@ -85,12 +85,13 @@
       var asc;
 
       var orderBy = $('#notesOrder').val() === "created" ? 'createdAt' : 'updatedAt';
-      $('body').append($('#notesOrder').val());
+
       // This is statement only applies if the "newest to oldest" filtering feature is turned on
       if ($('#notesOrderDirection').val()) {
+        $('body').append($('#notesOrderDirection').val());
         asc = $('#notesOrderDirection').val() === "asc";
       } else {
-        asc = orderBy === 'updatedAt'; 
+        asc = (orderBy === 'updatedAt'); 
       }
 
       var searchTerm = notesSearchFilter.val().toLowerCase();
