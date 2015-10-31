@@ -181,12 +181,12 @@
     });
 
     // Filters and sorts the notes
-    filterFormElements.change(function () {
+    filterFormElements.on('change', function () {
       renderNotes(notes);
     });
     notesSearchFilter.keyup(function () {
       renderNotes(notes);
-    })
+    });
 
   });
 })();
