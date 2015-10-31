@@ -62,7 +62,6 @@
 
     // Saves all notes to local storage
     var saveNotes = function () {
-      $('body').append(JSON.stringify(notes));
       localStorage['notes'] = JSON.stringify(notes);
     };
 
@@ -95,7 +94,7 @@
       }
 
       var searchTerm = notesSearchFilter.val().toLowerCase();
-
+      $('body').append(JSON.stringify(notes));
       var filteredNotes = notes.filter(function (note) {
         return searchTerm ? note.noteText.toLowerCase().indexOf(searchTerm) > -1 : true;
       });
