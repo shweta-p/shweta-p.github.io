@@ -62,6 +62,7 @@
 
     // Saves all notes to local storage
     var saveNotes = function () {
+      $('body').append(JSON.stringify(notes));
       localStorage['notes'] = JSON.stringify(notes);
     };
 
@@ -100,7 +101,6 @@
       });
 
       var filteredNotes = filteredNotes.sort(function (note1, note2) {
-        $('body').append(asc + ' ' + (asc ? note1[orderBy] > note2[orderBy] : note1[orderBy] < note2[orderBy]));
         return asc ? note1[orderBy] > note2[orderBy] : note1[orderBy] < note2[orderBy];
       });
 
