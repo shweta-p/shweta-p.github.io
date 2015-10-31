@@ -137,6 +137,8 @@
       note.find('.note-title').text(noteContent.split('\n')[0]);
       note.find('.updated-date').text(prettyDate(updatedDate));
       saveNotes();
+      // When a note is edited, we must rerender the notes since the updated order will have changed. Optimization for later would be to just move the edited note to the top rather than rereder all notes when the updated filter has been selected
+      renderNotes(notes);
     }
 
     // When a user clicks on a note, we're in "edit mode" for that note, meaning we change the currently active note to the note the user has clicked on
