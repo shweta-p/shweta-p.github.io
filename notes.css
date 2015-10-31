@@ -27,18 +27,23 @@ button, input {
 }
 
 .filters {
-  background-color: #9CDFFF;
+  background-color: #14B3FF;
   display: inline-block;
   width: 100%;
   height: 35px;
   margin-bottom: 10px;
 }
 
-.filters input {
+.search-filter {
   width: calc(100% - 108px);
+  padding-left: 10px;
+}
+
+.filters input {
   background-color: inherit;
   border: none;
   padding-left: 5px;
+  width: calc(100% - 16px);
 }
 
 .filters input::-webkit-input-placeholder {
@@ -84,10 +89,10 @@ select {
 }
 
 .note:nth-child(odd) {
-  background-color: #F7FDFF;
+  background-color: #9CDFFF;
 }
 .note:nth-child(even) {
-  background-color: #9CDFFF;
+  background-color: #F7FDFF;
 }
 
 .note {
